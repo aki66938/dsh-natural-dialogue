@@ -22,20 +22,58 @@
 
 ## 安装
 
-需要 Node.js 20.3+，以及提供 `systemPrompt`、`llm` 和 Agent 回合钩子的 DSH。运行时接口版本与本地验证范围见架构说明。
+需要提供 `systemPrompt`、`llm` 和 Agent 回合钩子的 DSH。命令行或源码安装需要 Node.js 20.3+；桌面端通常使用自带运行时。运行时接口版本与本地验证范围见架构说明。
+
+### 桌面端安装（推荐）
+
+1. 在 DSH 中打开「插件 → 添加插件」（部分版本入口位于设置中）。
+2. 在安装框中粘贴以下 Git 地址：
+
+   ```text
+   git+https://github.com/aki66938/dsh-natural-dialogue.git
+   ```
+
+3. 核对仓库来源，确认安装，完成后选择启用。
+4. 重启 DSH，在「设置 → 自然对话」中配置人格和记忆。
+
+插件管理器会下载源码和依赖，通常不需要手动执行 npm 命令。安装需要能访问 GitHub 和依赖注册表；更换 npm 镜像不能解决 GitHub 本身无法访问的问题。安装失败时先查看插件管理器的安装详情。
+
+当前地址跟随默认分支。插件已完成本机加载与保存验证，尚未完成全新桌面环境从 Git 地址安装的端到端验证。
+
+### 命令行安装
+
+使用你实际运行 DSH 的 profile；桌面用户优先通过应用内插件管理器安装，避免装进另一套 profile。
 
 ```powershell
-npm ci
-dsh plugin --profile desktop add "<本项目绝对路径>"
+dsh plugin --profile <实际的profile名称> add "git+https://github.com/aki66938/dsh-natural-dialogue.git"
 ```
 
-首次挂载插件需要重启 DSH。之后在「设置 → 自然对话」修改配置，下一轮对话使用新配置。
+### 从源码安装
+
+```powershell
+git clone https://github.com/aki66938/dsh-natural-dialogue.git
+cd dsh-natural-dialogue
+npm ci --ignore-scripts
+dsh plugin --profile <实际的profile名称> add "<本项目绝对路径>"
+```
+
+首次挂载插件需要重启 DSH。之后在「设置 → 自然对话」修改配置并保存，下一轮对话使用新配置。
+
+### 首次配置
+
+先保留「日常聊天」默认方案，也可以更改姓名、角色背景和口吻。建议在一个独立聊天工作区开始测试；默认按工作区隔离记忆，不自动导入旧会话。到记忆页确认事实与表达候选后，后续相关对话才会采用这些记录。关闭独立回复、自动整理等开关可以减少辅助调用。
 
 默认开启规划、独立 Replyer 与新对话记忆整理，通常每轮额外一次规划、一次最终回复生成、一次整理调用，失败重试可能增加用量。Replyer 跟随主请求的实际 provider/model；规划和整理可以指定辅助 provider/model。**近期对话会发送给你配置的模型服务**，SQLite 数据库本身保存在本机。
 
 新手建议先用一个独立聊天工作区测试。事实和表达默认先进入待确认队列，情景摘要可以自动生效。要把事实自动采用，关闭「事实记忆需人工确认」，但同属性矛盾的内容仍会留待审核。
 
 不会自动导入旧会话、修改其他插件、主动发消息或执行外部动作。工作任务仍由 DSH 完成，插件不会为了口吻截断代码或弱化权限检查。
+
+### 插件索引
+
+当前可通过以上 Git 地址直接安装，不依赖市场收录。DSH 的「发现」使用可添加的第三方索引源，发布 GitHub 仓库不会自动成为官方内置插件。
+
+社区收录入口为 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)，具体要求见其[贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)。提交申请不代表已收录，审核状态以该仓库中的 PR 为准。
 
 ## 人格怎么设置
 
