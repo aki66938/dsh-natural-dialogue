@@ -73,7 +73,7 @@ dsh plugin --profile <实际的profile名称> add "<本项目绝对路径>"
 
 当前可通过以上 Git 地址直接安装，不依赖市场收录。DSH 的「发现」使用可添加的第三方索引源，发布 GitHub 仓库不会自动成为官方内置插件。
 
-社区收录入口为 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)，具体要求见其[贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)。提交申请不代表已收录，审核状态以该仓库中的 PR 为准。
+已向 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 提交[收录申请 #10071](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/10071)，具体要求见其[贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)。提交申请不代表已收录，审核状态以该 PR 为准。
 
 ## 人格怎么设置
 
