@@ -1,0 +1,52 @@
+{
+  "name": "dsh-natural-dialogue",
+  "version": "0.3.1",
+  "description": "Conversation planning, evidence-backed memory and learned expression for DeepSeek Harness.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "examples",
+    "cordis.patch.yml",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test --test-concurrency=1 tests/engine.test.mjs tests/host.test.mjs tests/memory.test.mjs tests/replyer.test.mjs tests/native-v4.test.mjs tests/boundaries.test.mjs",
+    "check": "node --check lib/index.js && node --check lib/client.js",
+    "format": "prettier --write lib tests docs README.md package.json .prettierrc.json .github/workflows/test.yml",
+    "format:check": "prettier --check lib tests docs README.md package.json .prettierrc.json .github/workflows/test.yml"
+  },
+  "engines": {
+    "node": ">=20.3"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "memory",
+    "dialogue"
+  ],
+  "dependencies": {
+    "sql.js": "1.14.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
