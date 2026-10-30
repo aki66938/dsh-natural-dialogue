@@ -24,7 +24,18 @@
 
 需要提供 `systemPrompt`、`llm` 和 Agent 回合钩子的 DSH。命令行或源码安装需要 Node.js 20.3+；桌面端通常使用自带运行时。运行时接口版本与本地验证范围见架构说明。
 
-### 桌面端安装（推荐）
+### 插件市场搜索安装（推荐）
+
+本插件已被社区目录 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 收录，可在使用该目录的插件市场中搜索安装。
+
+1. 打开 DSH 的插件市场，或「插件 → 发现」（需已添加包含本插件的社区索引源）。
+2. 搜索 `dsh-natural-dialogue`。
+3. 打开插件详情，核对源码仓库为 `aki66938/dsh-natural-dialogue`，确认安装并启用。
+4. 重启 DSH，在「设置 → 自然对话」中配置人格和记忆。
+
+如果搜索不到，先刷新市场或索引；不同索引源的同步时间可能不同，也可以使用下方 Git 地址安装。社区收录不代表 DeepSeek 官方内置或认证。
+
+### 桌面端通过 Git 地址安装
 
 1. 在 DSH 中打开「插件 → 添加插件」（部分版本入口位于设置中）。
 2. 在安装框中粘贴以下 Git 地址：
@@ -39,6 +50,8 @@
 插件管理器会下载源码和依赖，通常不需要手动执行 npm 命令。安装需要能访问 GitHub 和依赖注册表；更换 npm 镜像不能解决 GitHub 本身无法访问的问题。安装失败时先查看插件管理器的安装详情。
 
 当前地址跟随默认分支。插件已完成本机加载与保存验证，尚未完成全新桌面环境从 Git 地址安装的端到端验证。
+
+当前未发布 npm 包，因此在「添加插件」中仅填写 `dsh-natural-dialogue` 不等于从市场搜索安装。若界面提示“该插件已安装”，表示当前 profile 已有同名插件，无需重复安装；需要安装时请使用市场条目或完整 Git 地址。
 
 ### 命令行安装
 
@@ -71,9 +84,9 @@ dsh plugin --profile <实际的profile名称> add "<本项目绝对路径>"
 
 ### 插件索引
 
-当前可通过以上 Git 地址直接安装，不依赖市场收录。DSH 的「发现」使用可添加的第三方索引源，发布 GitHub 仓库不会自动成为官方内置插件。
+DSH 的「发现」使用可添加的第三方索引源；也可通过以上 Git 地址直接安装。
 
-已向 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 提交[收录申请 #10071](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/10071)，具体要求见其[贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)。提交申请不代表已收录，审核状态以该 PR 为准。
+[收录申请 #10071](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/10071) 已合并。使用该社区目录的市场可搜索本插件；具体是否显示取决于索引源同步和本地缓存。
 
 ## 人格怎么设置
 
